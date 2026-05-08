@@ -2,10 +2,15 @@ import express from "express";
 import http from "http";
 import ENV from "./src/config/dotenv.config.js";
 import { Server } from "socket.io";
+import cors from "cors"
 
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
+app.use(express.urlencoded())
+app.use(express.json())
+app.use(cors())
+
 
 
 app.get("/", (req, res) => {
